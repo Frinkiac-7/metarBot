@@ -1,0 +1,15 @@
+.active {
+	@apply text-green-200;
+}
+
+.menuList {
+	@apply flex p-2 gap-1;
+}
+
+.menuOption {
+	@apply focus:text-white hover:text-white;
+}
+
+.navBg {
+	@apply bg-gray-500 text-sm;
+}

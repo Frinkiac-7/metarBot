@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div *ngIf="this.loading === true">
+	<p>
+		Please wait
+	</p>
+</div>
+<div *ngIf="this.status.user === null">
+	<p>
+		An error was detected.
+	</p>
+	<p>
+		Error details:  
+	</p>
+	{{ this.status.error.message || "Error unknown"}}
+</div>
+<div *ngIf="this.status.user !== null">
+	<p>
+		User email:  {{ this.status.user.email || '' }}
+	</p>
+	<p>
+		User id:  {{ this.status.user.id || '' }}
+	</p>
+	<p>
+		User status:  {{ this.status.user.aud || '' }}
+	</p>
+</div>
+<div *ngIf="this.status.signout === 'success'">
+	<p>
+		User has signed out
+	</p>
+</div>
