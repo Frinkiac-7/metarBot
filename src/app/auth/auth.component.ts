@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SupabaseService } from '../services/supabase.service';
 
+// import { AuthGuard } from './../services/auth.guard';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -9,29 +11,51 @@ import { SupabaseService } from '../services/supabase.service';
 export class AuthComponent implements OnInit {
 
   constructor(private supabase: SupabaseService) { }
-	public status: any
-	public loading: boolean = true
 
-  ngOnInit(): void {
-		// this.userSignUp('penny@bigbang.com', 'Th151sMyPa55w0rd')
-		// this.userSignIn('leonard@bigbang.com', 'Th151sMyPa55w0rd')
-		// this.userSignOut()
+	ngOnInit(): void {
   }
 
-	async userSignUp(email: string, password: string) {
-		try {
-			this.status = await this.supabase.signUp(email, password)
-			console.log('status:', this.status)
-			this.loading = false
-		} catch(error) {
-			console.log('AuthComponent caught error:', error)
-		}
+	userForm = new FormGroup({
+		username: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+		password: new FormControl('', [Validators.required, Validators.minLength(8)])
+	})
+
+	authAction: Object = {}
+	loading: boolean = true
+	newUser: boolean = false
+	formStatus: any = this.userForm.controls 
+
+	toggleNewUser() {
+		this.newUser = !this.newUser
 	}
 
-	async userSignIn(email: string, password: string) {
+	authBtnText() {
+		return this.newUser === false ? 'Login' : 'Sign Up'
+	}
+
+	authBtnStyle() {
+		return this.userForm.status === 'INVALID' ? 'disabled' : 'enabled'
+	}
+
+	authBtnStatus() {
+		this.userForm.status === 'INVALID' ? 'false' : 'true'
+	}
+
+	onSubmit() {
+		if (this.newUser) {
+			this.userSignUp()
+		}
+		if (!this.newUser) {
+			this.userSignIn()
+		}
+		console.log('this.userForm:', this.userForm)
+		// TODO: Add a form.reset or something here
+	}
+
+	async userSignIn() {
 		try {
-			this.status = await this.supabase.signIn(email, password)
-			console.log('status:', this.status)
+			this.authAction = await this.supabase.signIn(this.userForm.value.username, this.userForm.value.password)
+			console.log('userSignIn - authAction:', this.authAction)
 			this.loading = false
 		} catch(error) {
 			console.log('AuthComponent caught error:', error)
@@ -40,12 +64,19 @@ export class AuthComponent implements OnInit {
 
 	async userSignOut() {
 		try {
-			this.status = await this.supabase.signOut()
-			console.log('status:', this.status)
+			this.authAction = await this.supabase.signOut()
+			console.log('this.authAction:', this.authAction)
 			this.loading = false
-			if(this.status.error === null) {
-				this.status.signout = 'success'
-			}
+		} catch(error) {
+				console.log('AuthComponent caught error:', error)
+		}
+	}
+
+	async userSignUp() {
+		try {
+			this.authAction = await this.supabase.signUp(this.userForm.value.username, this.userForm.value.password)
+			console.log('authAction:', this.authAction)
+			this.loading = false
 		} catch(error) {
 			console.log('AuthComponent caught error:', error)
 		}

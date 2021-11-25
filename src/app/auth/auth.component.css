@@ -1,0 +1,19 @@
+.auth-btn {
+	@apply bg-blue-300 text-black p-1 rounded-md hover:bg-red-300
+}
+
+.disabled {
+	@apply bg-red-400 p-1 rounded-md cursor-not-allowed
+}
+
+.enabled {
+	@apply bg-green-400 p-1 rounded-md
+}
+
+.form-input {
+	@apply border border-gray-900 m-1 focus-within:bg-green-50
+}
+
+.form-label {
+	@apply text-xl
+}

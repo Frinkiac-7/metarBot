@@ -4,7 +4,13 @@
 			<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home Component</a>
 		</li>
 		<li class="menuOption">
-			<a routerLink="/auth" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Auth Component</a>
+			<a routerLink="/auth" routerLinkActive="active">Auth Component</a>
+		</li>
+		<li class="menuOption" *ngIf="!authStatus()">
+			<a routerLink="/dashboard" routerLinkActive="active">Not Authed</a>
+		</li>
+		<li class="menuOption" *ngIf="authStatus()">
+			<a routerLink="/dashboard" routerLinkActive="active">Authed</a>
 		</li>
 	</ul>
 </nav>

@@ -1,31 +1,40 @@
 <app-navbar></app-navbar>
-<div *ngIf="this.loading === true">
-	<p>
-		Please wait
+<div class="p-10 text-center">
+	<h1 class="text-center text-2xl text-blue-600">Access metarBot</h1>
+	<p *ngIf="this.newUser; else login">
+		Already have an account?  Great!  <span><button class="btn" type="button" (click)="toggleNewUser()">Login</button></span> to access your account!
 	</p>
-</div>
-<div *ngIf="this.status.user === null">
-	<p>
-		An error was detected.
-	</p>
-	<p>
-		Error details:  
-	</p>
-	{{ this.status.error.message || "Error unknown"}}
-</div>
-<div *ngIf="this.status.user !== null">
-	<p>
-		User email:  {{ this.status.user.email || '' }}
-	</p>
-	<p>
-		User id:  {{ this.status.user.id || '' }}
-	</p>
-	<p>
-		User status:  {{ this.status.user.aud || '' }}
-	</p>
-</div>
-<div *ngIf="this.status.signout === 'success'">
-	<p>
-		User has signed out
-	</p>
+	<ng-template #login>
+		Don't have an account?  No problem! <span><button class="btn" type="button" (click)="toggleNewUser()">Sign Up</button></span> today!
+	</ng-template>
+	<div class="m-10">
+		<p *ngIf="!this.newUser; else signUp">
+			Enter your username and password to sign in to your account
+		</p>
+		<ng-template #signUp>
+			Enter a valid email address and a password greater than 8 characters
+		</ng-template>	
+		<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+			<div>
+				<label class="form-label" for="Username">Username: </label>
+				<input class="form-input" type="email" formControlName="username" placeholder="name@provider.tld" autocomplete="username" autofocus="autofocus">
+			</div>
+			<div>
+				<label class="form-label" for="password">Password: </label>
+				<input class="form-input" id="password" type="password" formControlName="password" placeholder="Type your password here" autocomplete="current-password">	
+				<p *ngIf="formStatus.username.errors; else email">Username must be a valid email address</p>
+				<ng-template #email>
+					<p>Email address is valid</p>
+				</ng-template>	
+				<p *ngIf="formStatus.password.errors; else password">Password must be greater than 8 characters</p>
+				<ng-template #password>
+					<p>Password field is valid</p>
+				</ng-template>
+			</div>
+			<button [class]="authBtnStyle()" type="submit" [disabled]="authBtnStatus()" [innerText]="authBtnText()" ></button>
+		</form>	
+	</div>
+	<div>
+		<button class="btn" (click)="userSignOut()">logout</button>
+	</div>
 </div>

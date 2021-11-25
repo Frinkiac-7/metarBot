@@ -1,8 +1,12 @@
-import { NotfoundComponent } from './notfound/notfound.component';
-import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
 	{
@@ -12,6 +16,11 @@ const routes: Routes = [
 	{
 		path: 'auth',
 		component: AuthComponent
+	},
+	{
+		path: 'dashboard',
+		canActivate: [AuthGuard],
+		component: DashboardComponent
 	},
 	{
 		path: '404',
