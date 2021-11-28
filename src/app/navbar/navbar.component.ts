@@ -1,5 +1,7 @@
-import { SupabaseService } from './../services/supabase.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { SupabaseService } from './../services/supabase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private supabase: SupabaseService) { }
+  constructor(private supabase: SupabaseService, private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+	showProfile = false
+  showMenu = false
+	authAction: any
+
+	toggleProfile() {
+		this.showProfile = !this.showProfile
+		this.showMenu = false
+	}
+
+  toggleNavbar(){
+    this.showMenu = !this.showMenu;
+		this.showProfile = false
   }
 
 	authStatus() {
@@ -18,6 +34,18 @@ export class NavbarComponent implements OnInit {
 			return true
 		} else {
 			return false
+		}
+	}
+
+	async userSignOut() {
+		this.showProfile = false;
+		try {
+			this.authAction = await this.supabase.signOut()
+			console.log('this.authAction:', this.authAction)
+		} catch(error) {
+				console.log('Navbar caught error:', error)
+		} finally {
+			this.router.navigate(['/'])
 		}
 	}
 

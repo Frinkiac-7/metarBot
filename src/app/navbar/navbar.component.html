@@ -1,16 +1,36 @@
-<nav class="navBg">
-	<ul class="menuList">
-		<li class="menuOption">
-			<a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">Home Component</a>
-		</li>
-		<li class="menuOption">
-			<a routerLink="/auth" routerLinkActive="active">Auth Component</a>
-		</li>
-		<li class="menuOption" *ngIf="!authStatus()">
-			<a routerLink="/dashboard" routerLinkActive="active">Not Authed</a>
-		</li>
-		<li class="menuOption" *ngIf="authStatus()">
-			<a routerLink="/dashboard" routerLinkActive="active">Authed</a>
-		</li>
-	</ul>
+<nav class="nbBase">
+	<div class="nbLayout">
+		<div class="nbLogo">
+			<img src="../../assets/drone-svgrepo-com-bw.svg" class="nbBrandImg filter-green-500" alt="metarBot Logo">
+			<p class="nbAppName">metarBot</p>
+		</div>
+		<!-- Menu for screens larger than 768px -->
+		<div class="nbMenuLg">
+			<a class="nbUserMenuItem" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+			<a class="nbUserMenuItem" routerLink="#" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Lorem</a>
+			<a class="nbUserMenuItem" routerLink="#" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ipsum</a>
+			<a *ngIf="authStatus()" class="nbUserMenuItem" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+		</div>
+		<!-- UI conditionals -->
+		<div class="flex flex-row justify-end items-center gap-4 p-2">
+			<img src="../../assets/hamburger-menu-svgrepo-com.svg" class="nbNavIcon filter-green-500" alt="Toggle menu icon" role="button" (click)="toggleNavbar()">
+			<img src="../../assets/user-svgrepo-com.svg" class="nbProfileIcon filter-green-500" alt="Toggle user profile settings" role="button" (click)="toggleProfile()">
+		</div>
+	</div>
+	<!-- User profile dropdown -->
+	<div [ngClass]="{'hidden': !showProfile, 'nbProfileMenu': showProfile}" role="menu">
+		<a *ngIf="authStatus()" class="nbUserMenuItem" role="menuitem" routerLink="#">Settings</a>
+		<a *ngIf="authStatus()" class="nbUserMenuItem" role="menuitem" routerLink="#">Account</a>
+		<a *ngIf="authStatus()" class="nbUserMenuItem" role="menuitem" role="button" (click)="userSignOut()">Logout</a>
+		<a *ngIf="!authStatus()" class="nbUserMenuItem" role="menuitem" role="button" routerLink="/auth">Login</a>
+	</div>
+	<!-- Menu for screens smaller than 768px -->
+	<div [ngClass]="{'hidden': !showMenu, 'nbMenuSm': showMenu}" role="menu">
+		<!-- origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 -->
+		<a class="nbUserMenuItem" role="menuitem" routerLink="/">Home</a>
+		<a class="nbUserMenuItem" role="menuitem" routerLink="#" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Lorem</a>
+		<a class="nbUserMenuItem" role="menuitem" routerLink="#" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Ipsum</a>
+		<a *ngIf="authStatus()" class="nbUserMenuItem" role="menuitem" routerLink="/dashboard">Dashboard</a>
+	</div>
 </nav>
+
