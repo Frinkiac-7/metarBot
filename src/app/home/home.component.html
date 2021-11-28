@@ -1,9 +1,23 @@
 <app-navbar></app-navbar>
-<div class="jumbotron">
-	<h1>Jumbotron Placeholder:  TailWindCSS successfull installed</h1>
-</div>
-<div class="m-2">
-	<button class="rounded-sm border-2 border-black" (click)="console($event)">
-		Button click
-	</button>
+<div class="m-2 p-2 text-center">
+  <div class="jumbotron ">
+    <h1>metarBot</h1>
+		<img src="../../assets/partly-cloudy-color-svgrepo-com.svg" class="h-10 w-10 mx-auto" alt="">
+    <h2 class="pb-2">Plans, tracks, and stores your flight weather data</h2>
+		<p class="border border-red-400 pt-2">metarBot is a weather utility for operators of small unmanned aerial systems. It's designed to help reduce the need to check multiple websites for weather reports, meteorological aerodrome reports (aka METARs), and other sources used by commercial and hobbyist drone pilots.</p>
+	</div>
+  <div class="grid grid-cols-2 py-3 gap-5">
+    <div class="border border-red-400 bg-white rounded-md">
+      <img src="../../assets/free-sticker-svgrepo-com.svg" class="h-12 w-12 mx-auto" alt="">
+			<h1>No account required!</h1>
+      <p>You can use <strong>metarBot</strong> to without having to sign up.  Just click the button below to get the info about for your chosen area of flight operation</p>
+			<button class="btn">View</button>
+    </div>
+    <div class="border border-red-400 bg-gray-100 rounded-md">
+			<img src="../../assets/connect-svgrepo-com.svg" class="h-12 w-12 mx-auto" alt="">
+      <h1>One account with everything!</h1>
+      <p>By creating an account you get access to all of metarBots features like creating a dashboard to see all your areas at a glance.</p>
+			<button class="btn">Sign Up</button>
+    </div>
+  </div>
 </div>
