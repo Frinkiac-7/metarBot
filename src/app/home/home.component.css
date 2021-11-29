@@ -1,3 +1,8 @@
 .jumbotron {
-	@apply bg-gray-50 text-black text-center rounded-md;
+	@apply text-black text-center rounded-md;
+}
+
+/* ROTIAF: CSS filter property used because Tailwind classes have no effect on svgs used as images like they do on inline svg code */
+.filter-green-500 {
+	filter: invert(51%) sepia(93%) saturate(387%) hue-rotate(103deg) brightness(87%) contrast(98%);
 }

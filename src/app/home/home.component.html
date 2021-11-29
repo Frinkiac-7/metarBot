@@ -1,23 +1,72 @@
 <app-navbar></app-navbar>
-<div class="m-2 p-2 text-center">
-  <div class="jumbotron ">
-    <h1>metarBot</h1>
-		<img src="../../assets/partly-cloudy-color-svgrepo-com.svg" class="h-10 w-10 mx-auto" alt="">
-    <h2 class="pb-2">Plans, tracks, and stores your flight weather data</h2>
-		<p class="border border-red-400 pt-2">metarBot is a weather utility for operators of small unmanned aerial systems. It's designed to help reduce the need to check multiple websites for weather reports, meteorological aerodrome reports (aka METARs), and other sources used by commercial and hobbyist drone pilots.</p>
+<div class="m-5 p-2">
+  <div class="jumbotron border border-red-400">
+    <h1 class="uppercase tracking-widest text-3xl">metarBot</h1>
+		<img src="../../assets/partly-cloudy-color-svgrepo-com.svg" class="h-16 w-16 mx-auto" alt="">
+    <h2 class="p-2 pb-4">Plans, tracks, and stores your flight weather data</h2>
+		<p class="border border-red-400 pt-2 bg-gray-100 rounded-md mx-32">metarBot is a weather utility for operators of small unmanned aerial systems. It's designed to help reduce the need to check multiple websites for weather reports, meteorological aerodrome reports (aka METARs), and other sources used by commercial and hobbyist drone pilots.</p>
 	</div>
   <div class="grid grid-cols-2 py-3 gap-5">
-    <div class="border border-red-400 bg-white rounded-md">
-      <img src="../../assets/free-sticker-svgrepo-com.svg" class="h-12 w-12 mx-auto" alt="">
-			<h1>No account required!</h1>
-      <p>You can use <strong>metarBot</strong> to without having to sign up.  Just click the button below to get the info about for your chosen area of flight operation</p>
+    <div class="text-center border border-red-400 bg-gray-100 rounded-md">
+      <img src="../../assets/free-sticker-svgrepo-com.svg" class="p-2 h-16 w-1h-16 mx-auto" alt="">
+			<h2 class="tracking-wider text-xl">No account required!</h2>
+      <p class="text-left px-3">Use <strong>metarBot</strong> without having to sign up.  Just click the button below access the app dashboard.</p>
 			<button class="btn">View</button>
     </div>
-    <div class="border border-red-400 bg-gray-100 rounded-md">
-			<img src="../../assets/connect-svgrepo-com.svg" class="h-12 w-12 mx-auto" alt="">
-      <h1>One account with everything!</h1>
-      <p>By creating an account you get access to all of metarBots features like creating a dashboard to see all your areas at a glance.</p>
+    <div class="text-center border border-red-400 bg-gray-100 rounded-md">
+			<img src="../../assets/connect-svgrepo-com.svg" class="p-2 h-16 w-16 mx-auto" alt="">
+      <h2 class="tracking-wider text-xl">One account with everything!</h2 >
+      <p class="text-left px-3">By creating an account you get access to all of metarBots features like dashboard customizations and adding favorites.</p>
 			<button class="btn">Sign Up</button>
     </div>
   </div>
+	<div class="text-center border border-red-400 bg-gray-100">
+		<h2 class="uppercase text-center tracking-wider text-3xl">Features</h2>
+		<table class="table-fixed text-center bg-gray-50 mx-auto border border-red-400 pb-3">
+			<thead>
+				<tr class="border border-red-400 bg-gray-300">
+					<th class="w-3/5">Description</th>
+					<th class="w-1/5 border-l border-red-400">Account Required?</th>
+				</tr>
+			</thead>
+			<tbody class="border border-red-400">
+				<tr class="border border-red-400">
+					<td>Lookup IATA codes</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/unchecked-svgrepo-com.svg" class="mx-auto p-2 h-10 w-h-10" alt="">
+					</td>
+				</tr>
+				<tr class="border border-red-400">
+					<td>Weather Snapshots</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/unchecked-svgrepo-com.svg" class="mx-auto p-2 h-10 w-h-10" alt="">
+					</td>
+				</tr>
+				<tr class="border border-red-400">
+					<td>Lookup TFRs</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/unchecked-svgrepo-com.svg" class="mx-auto p-2 h-10 w-h-10" alt="">
+					</td>
+				</tr>
+				<tr class="border border-red-400">
+					<td>Lookup METARs</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/unchecked-svgrepo-com.svg" class="mx-auto p-2 h-10 w-h-10" alt="">
+					</td>
+				</tr>
+				<tr class="border border-red-400">
+					<td>Text Alerts</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/checkmark-svgrepo-com.svg" class="mx-auto -my-3 filter-green-500" alt="">
+					</td>
+				</tr>
+				<tr class="border border-red-400">
+					<td>Customize Dashboard</td>
+					<td class="border-l border-red-400">
+						<img src="../../assets/checkmark-svgrepo-com.svg" class="mx-auto -my-3 filter-green-500" alt="">
+					</td>
+				</tr>
+			</tbody>
+		</table>	
+	</div>
 </div>
