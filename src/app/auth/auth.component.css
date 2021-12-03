@@ -3,5 +3,5 @@
 }
 
 .tab-inactive {
-	@apply text-white bg-black
+	@apply text-black bg-gray-300
 }

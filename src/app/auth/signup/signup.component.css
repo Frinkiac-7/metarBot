@@ -1,5 +1,5 @@
 .form-input {
-	@apply border border-gray-900 m-1 focus-within:bg-green-50 w-80
+	@apply border border-gray-900 m-1 focus-within:bg-green-50
 }
 
 .form-label {
