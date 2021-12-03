@@ -1,0 +1,31 @@
+<h1>Create a <strong>metarBot</strong> account</h1>
+<form [formGroup]="signupForm" (ngSubmit)="signUp()">
+	<div class="grid-cols-2">
+		<div class="flex justify-center items-center col-span-1">
+			<img src="../../../assets/envelope-mail-svgrepo-com.svg" class="h-5 w-5" alt="">
+			<label class="form-label pl-2" for="username">Username:</label>
+		</div>
+		<div class="flex justify-center items-center col-span-1">
+			<input class="form-input" type="email" formControlName="username">
+		</div>
+	</div>
+	<div class="grid-cols-2">
+		<div class="flex justify-center items-center col-span-1">
+			<img src="../../../assets/key-svgrepo-com.svg" class="h-5 w-5" alt="">
+			<label class="form-label pl-2" for="password">Password:</label>
+		</div>
+		<div class="flex justify-center items-center col-span-1">
+			<input class="form-input" type="password" formControlName="password">
+		</div>
+	</div>
+	<div class="grid-cols-2">
+		<div class="flex justify-center items-center col-span-1">
+			<img src="../../../assets/key-svgrepo-com.svg" class="h-5 w-5" alt="">
+			<label class="form-label pl-2" for="passwordConfirmation">Confirm Password:</label>
+		</div>
+		<div class="col-span-1">
+			<input class="form-input" type="password" formControlName="passwordConfirmation">
+		</div>
+	</div>
+	<button class="bg-blue-500" role="button" type="submit">SIGN UP</button>
+</form>

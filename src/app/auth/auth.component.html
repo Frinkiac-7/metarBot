@@ -1,40 +1,44 @@
 <app-navbar></app-navbar>
-<div class="p-10 text-center">
-	<h1 class="text-center text-2xl text-blue-600">Access metarBot</h1>
-	<p *ngIf="this.newUser; else login">
-		Already have an account?  Great!  <span><button class="btn" type="button" (click)="toggleNewUser()">Login</button></span> to access your account!
-	</p>
-	<ng-template #login>
-		Don't have an account?  No problem! <span><button class="btn" type="button" (click)="toggleNewUser()">Sign Up</button></span> today!
-	</ng-template>
-	<div class="m-10">
-		<p *ngIf="!this.newUser; else signUp">
-			Enter your username and password to sign in to your account
-		</p>
-		<ng-template #signUp>
-			Enter a valid email address and a password greater than 8 characters
-		</ng-template>	
-		<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-			<div>
-				<label class="form-label" for="Username">Username: </label>
-				<input class="form-input" type="email" formControlName="username" placeholder="name@provider.tld" autocomplete="username" autofocus="autofocus">
+<div class="p-5 m-2 border border-red-400 h-max bg-gray-100">
+  <div class="grid grid-cols-12 border border-red-400">
+    <!-- Logo div -->
+    <div class="col-span-4 border border-red-400 max-h-52 bg-gray-500">
+      <img src="../../assets/drone-svgrepo-com-bw.svg" class="h-40 w-40 mx-auto filter-green-500" alt="">
+      <h1 class="tracking-widest text-center text-white">metarBot</h1>
+      <!-- Logo verbiage -->
+      <div class="mt-8 border border-red-400">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, illo nisi, distinctio praesentium aut enim fuga eveniet eligendi molestias ab ea vel dignissimos provident amet explicabo voluptatum architecto esse aliquid.
+        </p>
+      </div>
+    </div>
+    <!-- Login div -->
+    <div class="flex flex-col items-center col-span-8 border border-red-400 shadow-2xl justify-center m-3 p-3">
+			<div class="flex justify-center w-5/6 text-center bg-white">
+				<div [ngClass]="newUser ? 'tab-active' : 'tab-inactive'" class="border border-b-0 border-r-0 border-black w-full" role="button" (click)="toggleSignUp()">
+					<h1>CREATE AN ACCOUNT</h1>
+				</div>
+				<div class="border border-black"></div>
+				<div [ngClass]="!newUser ? 'tab-active' : 'tab-inactive'" class="border border-b-0 border-l-0 border-black w-full" role="button" (click)="toggleLogin()">
+					<h1>LOGIN</h1>
+				</div>
 			</div>
-			<div>
-				<label class="form-label" for="password">Password: </label>
-				<input class="form-input" id="password" type="password" formControlName="password" placeholder="Type your password here" autocomplete="current-password">	
-				<p *ngIf="formStatus.username.errors; else email">Username must be a valid email address</p>
-				<ng-template #email>
-					<p>Email address is valid</p>
-				</ng-template>	
-				<p *ngIf="formStatus.password.errors; else password">Password must be greater than 8 characters</p>
-				<ng-template #password>
-					<p>Password field is valid</p>
-				</ng-template>
+			<div *ngIf="newUser" class="flex justify-center text-center border border-t-0 border-black bg-white w-5/6 shadow-2xl">
+				<app-signup></app-signup>
 			</div>
-			<button [class]="authBtnStyle()" type="submit" [disabled]="authBtnStatus()" [innerText]="authBtnText()" ></button>
-		</form>	
-	</div>
-	<div>
-		<button class="btn" (click)="userSignOut()">logout</button>
-	</div>
+			<div *ngIf="!newUser" class="flex justify-center text-center border border-t-0 border-black bg-white w-5/6 shadow-2xl">
+				<app-signin></app-signin>
+			</div>
+			<div class="mt-5 text-center">
+				<h3 class="tracking-wide uppercase">Coming Soon</h3>
+				<div class="text-left">
+					<p>In the coming weeks, you'll be able to login using an existing account at one of the following platforms:</p>
+				</div>
+				<p>Apple</p>
+				<p>Facebook</p>
+				<p>Google</p>
+				<p>Twitter</p>
+			</div>
+		</div>
+  </div>
 </div>
