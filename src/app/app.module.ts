@@ -9,13 +9,14 @@ import { SupabaseService } from './services/supabase.service';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     NotfoundComponent,
     DashboardComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
