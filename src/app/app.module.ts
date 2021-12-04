@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AuthGuard } from './services/auth.guard';
 import { SupabaseService } from './services/supabase.service';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -29,7 +31,10 @@ import { SignupComponent } from './auth/signup/signup.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		BrowserAnimationsModule,
+		ToastrModule.forRoot(),
+		ToastContainerModule
   ],
   providers: [SupabaseService, AuthGuard],
   // providers: [SupabaseService],

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SupabaseService } from './../../services/supabase.service';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,10 @@ import { SupabaseService } from './../../services/supabase.service';
 })
 export class SigninComponent implements OnInit {
 
-  constructor(private auth: SupabaseService, private router: Router) { }
+	@ViewChild(ToastContainerDirective, { static: true })
+	toastContainer: ToastContainerDirective | undefined
+
+  constructor(private auth: SupabaseService, private router: Router, private toastrService: ToastrService) { }
 
 	// authAction!: AuthAction | any
 	// TODO:  Interface causes an error stating that values are missing.  Using any for now but need to resolve this.
@@ -22,21 +26,35 @@ export class SigninComponent implements OnInit {
 	})
 
 	async login() {
+		if(this.loginForm.controls['username'].status === 'INVALID') {
+			this.loginForm.reset({ username: '', password: ''})
+			this.toastrService.error('Must use a valid email address', 'Error', { progressBar: true})
+			return
+		}
+
 		try {
 			const result = await this.auth.signIn(this.loginForm.value.username, this.loginForm.value.password)
-			console.log('login() - result:', result)
+			this.loginForm.reset({ username: '', password: ''})
 		} catch(err) {
 			console.log('login() - catch(err):', err)
 		} finally {
 			if (this.auth.session) {
-				this.router.navigate(['/dashboard'])
+				this.toastrService.success('Login successful','Status', {
+					progressBar: true,
+				})
+				.onHidden.subscribe(() => {
+					this.router.navigate(['/dashboard'])
+				})
 			} else {
-				this.router.navigate(['#'])
+				this.toastrService.error('Login Error. Please Try again','Status', {
+					progressBar: true,
+				})
 			}
 		}
 	}
 
 	ngOnInit(): void {
+		this.toastrService.overlayContainer = this.toastContainer
   }
 
 }
