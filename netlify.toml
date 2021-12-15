@@ -1,0 +1,8 @@
+[build]
+  publish = "dist/metarBot"
+  command = "ng build --prod"
+	functions = "./src/app/services/netlify"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
