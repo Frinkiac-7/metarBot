@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AuthGuard } from './services/auth.guard';
 import { SupabaseService } from './services/supabase.service';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { AvwxService } from './services/avwx.service';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -36,10 +38,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
 		ToastrModule.forRoot(),
-		ToastContainerModule
+		ToastContainerModule,
+		HttpClientModule
   ],
-  providers: [SupabaseService, AuthGuard],
-  // providers: [SupabaseService],
+  providers: [SupabaseService, AuthGuard, AvwxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
