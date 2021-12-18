@@ -26,7 +26,6 @@ export class SignupComponent implements OnInit {
 	async signUp() {
 		const pw = this.signupForm.value.password
 		const cpw = this.signupForm.value.passwordConfirmation
-		this.signupForm.reset({ username: '', password: '', passwordConfirmation: '' })
 		if(pw === cpw) {
 			try {
 				const result = await this.auth.signUp(this.signupForm.value.username, this.signupForm.value.password)
@@ -49,6 +48,7 @@ export class SignupComponent implements OnInit {
 			this.toastrService.error('Passwords do not match', 'Error')
 			return
 		}
+		this.signupForm.reset({ username: '', password: '', passwordConfirmation: '' })
 	}
 
   ngOnInit(): void {
