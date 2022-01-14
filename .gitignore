@@ -13,7 +13,7 @@
 # profiling files
 chrome-profiler-events*.json
 
-# IDEs and editors
+# Environment variables, IDEs, and editors
 /.idea
 .project
 .classpath
@@ -21,6 +21,7 @@ chrome-profiler-events*.json
 *.launch
 .settings/
 *.sublime-workspace
+.env
 
 # IDE - VSCode
 .vscode/*
