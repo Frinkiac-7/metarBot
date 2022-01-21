@@ -19,6 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { StationComponent } from './station/station.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     DashboardComponent,
     SigninComponent,
     SignupComponent,
-    FooterComponent
+    FooterComponent,
+    StationComponent
   ],
   imports: [
     BrowserModule,
