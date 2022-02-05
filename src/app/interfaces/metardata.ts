@@ -3,6 +3,8 @@ export interface Metar {
 	clouds:										Cloud[];
 	density_altitude:					number;
 	dewpoint:									GenericRSV;
+	// 'error' key is not native to API response.  Added to simplify error handling in the UI. Using type 'any' as API does not return consistent error object structure.
+	error:										any;
 	flight_rules:							string;
 	meta:											Meta;
 	other:										any[];

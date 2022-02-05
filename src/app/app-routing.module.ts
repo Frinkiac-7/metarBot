@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
+import { HiremeComponent } from './hireme/hireme.component';
+import { MetartafComponent } from './metartaf/metartaf.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { StationComponent } from './station/station.component';
@@ -21,6 +23,14 @@ const routes: Routes = [
 	{
 		path: 'station',
 		component: StationComponent
+	},
+	{
+		path: 'metartaf',
+		component: MetartafComponent
+	},
+	{
+		path: 'hireme',
+		component: HiremeComponent
 	},
 	{
 		path: 'dashboard',

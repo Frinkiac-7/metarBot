@@ -1,5 +1,74 @@
 <app-navbar></app-navbar>
-<div>
-	<p>station works!</p>
+<div class="text-center">
+	<h1>Welcome Back to <strong>metarBot</strong></h1>
+	<form [formGroup]="stationForm" (ngSubmit)="stationSearch(station.value)">
+		<div class="flex flex-col">
+			<div class="flex justify-center items-center">
+				<img src="../../assets/airport-svgrepo-com.svg" class="h-5 w-5" alt="">
+				<label class="form-label pl-2" for="stationId">Airport Code</label>
+			</div>
+			<div class="flex justify-center items-center col-span-1">
+				<input class="form-input" autocomplete="off" type="text" placeholder="Enter ICAO or IATA Code" formControlName="stationId" #station>			
+			</div>
+		</div>
+		<button class="bg-blue-500" role="button" type="submit">Search</button>
+	</form>
+	<div class="m-10 pt-5 pb-5 border border-red-500">
+		<div class="text-center p-1 grid grid-cols-3">
+			<div>
+				<h1>Name</h1>
+				<p>{{ stationData?.name }}</p>
+			</div>
+			<div>
+				<h1>Location</h1>
+				<p>{{ stationData?.city }}, {{ stationData?.country }}</p>
+			</div>
+			<div>
+				<h1>Elevation</h1>
+				<p>{{ stationData?.elevation_ft }} feet/{{ stationData?.elevation_m }} meters</p>
+			</div>
+		</div>
+		<div class="text-center p-1 grid grid-cols-3">
+			<div>
+				<h1>Coordinates</h1>
+				<p>Latitude: {{ stationData?.latitude }}</p>
+				<p>Longitude: {{ stationData?.longitude }}</p>
+			</div>
+			<div>
+				<h1>Size</h1>
+				<p>{{ stationData?.type }}</p>
+			</div>
+			<div>
+				<h1>Airport codes</h1>
+				<p>IATA: {{ stationData?.iata }}</p>
+				<p>ICAO: {{ stationData?.icao }}</p>
+			</div>
+		</div>
+		<div class="text-center p-1 grid grid-cols-3">
+			<div>
+				<h1>Reporting Status</h1>
+				<p>{{ stationData?.reporting }}</p>
+			</div>
+			<div>
+				<h1>Number of Runways</h1>
+				<p>{{ stationData?.runways?.length }}</p>
+			</div>
+			<div>
+				<h1>Notes</h1>
+				<p>{{ stationData?.note }}</p>
+			</div>
+		</div>
+		<div class="p-1 grid grid-cols-1 col-span-12">
+			<h1 class="text-center">Runways Details</h1>
+			<div  *ngFor="let runway of stationData?.runways" class="p-1 grid text-left grid-cols-6 border border-red-500 place-content-center">
+				<div>Identities: {{ runway.ident1}}, {{ runway.ident2 }}</div>
+				<div>Bearings: {{ runway.bearing1 }}, {{ runway.bearing2 }}</div>
+				<div>Length: {{ runway.length_ft }}</div>
+				<div>Width: {{ runway.width_ft }}</div>
+				<div>Lights: {{ runway.lights }}</div>
+				<div>Surface: {{ runway.surface }}</div>
+			</div>
+		</div>
+	</div>
 </div>
 <app-footer></app-footer>

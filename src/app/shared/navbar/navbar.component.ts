@@ -41,7 +41,6 @@ export class NavbarComponent implements OnInit {
 		this.showProfile = false;
 		try {
 			this.authAction = await this.supabase.signOut()
-			console.log('this.authAction:', this.authAction)
 		} catch(error) {
 				console.log('Navbar caught error:', error)
 		} finally {

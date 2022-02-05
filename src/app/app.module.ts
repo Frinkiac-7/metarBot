@@ -20,6 +20,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { StationComponent } from './station/station.component';
+import { MetartafComponent } from './metartaf/metartaf.component';
+import { HiremeComponent } from './hireme/hireme.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { StationComponent } from './station/station.component';
     SigninComponent,
     SignupComponent,
     FooterComponent,
-    StationComponent
+    StationComponent,
+    MetartafComponent,
+    HiremeComponent
   ],
   imports: [
     BrowserModule,
