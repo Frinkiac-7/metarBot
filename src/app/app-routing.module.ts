@@ -8,6 +8,7 @@ import { MetartafComponent } from './metartaf/metartaf.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { StationComponent } from './station/station.component';
+import { FeaturesComponent } from './features/features.component';
 
 import { AuthGuard } from './services/auth.guard';
 
@@ -27,6 +28,10 @@ const routes: Routes = [
 	{
 		path: 'metartaf',
 		component: MetartafComponent
+	},
+	{
+		path: 'features',
+		component: FeaturesComponent
 	},
 	{
 		path: 'hireme',

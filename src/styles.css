@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import url('https://fonts.googleapis.com/css2?family=Syne+Tactile&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap'); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* @font-face {
+	font-family: "ArchivoBlack";
+	src: local("ArchivoBlack-Regular") url(./assets/fonts/ArchivoBlack/ArchivoBlack-Regular.woff2) format("woff2"),
+	local("ArchivoBlack-Italic") url(./assets/fonts/ArchivoBlack/ArchivoBlack-Italic.woff2) format("woff2");
+} */
 
 body {
 	overflow: scroll;

@@ -22,6 +22,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { StationComponent } from './station/station.component';
 import { MetartafComponent } from './metartaf/metartaf.component';
 import { HiremeComponent } from './hireme/hireme.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { HiremeComponent } from './hireme/hireme.component';
     FooterComponent,
     StationComponent,
     MetartafComponent,
-    HiremeComponent
+    HiremeComponent,
+    FeaturesComponent
   ],
   imports: [
     BrowserModule,

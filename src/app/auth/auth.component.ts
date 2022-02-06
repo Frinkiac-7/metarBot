@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
   }
 
 	loading: boolean = true
-	newUser: boolean = false
+	newUser: boolean = true
 
 	toggleSignUp() {
 		this.newUser = true
