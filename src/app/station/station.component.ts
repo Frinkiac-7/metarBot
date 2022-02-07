@@ -32,6 +32,13 @@ export class StationComponent implements OnInit {
 					alert(`Error\nError Code: ${response.error.status}\nError Message: ${response.error.data.error}\nError Help: ${response.error.data.help}`)
 				} else {
 					this.stationData = response
+					// API returns 'size_airport' (e.g. 'large_airport') string value and I want to exclude the '_airport' portion in the output
+					this.stationData.type = this.stationData.type.replace('_airport', '').toUpperCase()
+					if(this.stationData.reporting) {
+						this.stationData.reporting = 'True'
+					} else {
+						this.stationData.reporting = 'False'
+					}
 				}
 			})
 		}

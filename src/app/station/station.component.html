@@ -1,5 +1,5 @@
 <app-navbar></app-navbar>
-<div class="text-center">
+<div class="m-1 text-center">
 	<h1>Welcome Back to <strong>metarBot</strong></h1>
 	<form [formGroup]="stationForm" (ngSubmit)="stationSearch(station.value)">
 		<div class="flex flex-col">
@@ -13,60 +13,62 @@
 		</div>
 		<button class="bg-blue-500" role="button" type="submit">Search</button>
 	</form>
-	<div class="m-10 pt-5 pb-5 border border-red-500">
-		<div class="text-center p-1 grid grid-cols-3">
-			<div>
-				<h1>Name</h1>
+	<div class="m-5 p-1 bg-white shadow-xl shadow-slate-900 rounded-md">
+		<h1>General Information</h1>
+		<p>General station information for an airfield by IATA or ICAO identification code.</p>
+	</div>
+	<div class="m-5 p-5 rounded-md shadow-xl shadow-slate-900">
+		<div class="text-center m-1 p-3 grid grid-cols-1 lg:grid lg:grid-cols-2 rounded-md">
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Name</h1>
 				<p>{{ stationData?.name }}</p>
 			</div>
-			<div>
-				<h1>Location</h1>
-				<p>{{ stationData?.city }}, {{ stationData?.country }}</p>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Location</h1>
+				<p *ngIf="stationData">{{ stationData?.city }}, {{ stationData?.country }}</p>
 			</div>
-			<div>
-				<h1>Elevation</h1>
-				<p>{{ stationData?.elevation_ft }} feet/{{ stationData?.elevation_m }} meters</p>
-			</div>
-		</div>
-		<div class="text-center p-1 grid grid-cols-3">
-			<div>
-				<h1>Coordinates</h1>
-				<p>Latitude: {{ stationData?.latitude }}</p>
-				<p>Longitude: {{ stationData?.longitude }}</p>
-			</div>
-			<div>
-				<h1>Size</h1>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Size</h1>
 				<p>{{ stationData?.type }}</p>
 			</div>
-			<div>
-				<h1>Airport codes</h1>
-				<p>IATA: {{ stationData?.iata }}</p>
-				<p>ICAO: {{ stationData?.icao }}</p>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Elevation</h1>
+				<p *ngIf="stationData">{{ stationData?.elevation_ft }} feet/{{ stationData?.elevation_m }} meters</p>
 			</div>
-		</div>
-		<div class="text-center p-1 grid grid-cols-3">
-			<div>
-				<h1>Reporting Status</h1>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Coordinates</h1>
+				<p *ngIf="stationData" class="overflow-hidden">Latitude: {{ stationData?.latitude }}</p>
+				<p *ngIf="stationData" class="overflow-hidden">Longitude: {{ stationData?.longitude }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Airport codes</h1>
+				<p *ngIf="stationData">IATA: {{ stationData?.iata }}</p>
+				<p *ngIf="stationData">ICAO: {{ stationData?.icao }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Reporting Status</h1>
 				<p>{{ stationData?.reporting }}</p>
 			</div>
-			<div>
-				<h1>Number of Runways</h1>
-				<p>{{ stationData?.runways?.length }}</p>
-			</div>
-			<div>
-				<h1>Notes</h1>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Notes</h1>
 				<p>{{ stationData?.note }}</p>
 			</div>
 		</div>
-		<div class="p-1 grid grid-cols-1 col-span-12">
-			<h1 class="text-center">Runways Details</h1>
-			<div  *ngFor="let runway of stationData?.runways" class="p-1 grid text-left grid-cols-6 border border-red-500 place-content-center">
-				<div>Identities: {{ runway.ident1}}, {{ runway.ident2 }}</div>
-				<div>Bearings: {{ runway.bearing1 }}, {{ runway.bearing2 }}</div>
-				<div>Length: {{ runway.length_ft }}</div>
-				<div>Width: {{ runway.width_ft }}</div>
-				<div>Lights: {{ runway.lights }}</div>
-				<div>Surface: {{ runway.surface }}</div>
+		<div class="m-5 mb-2 grid grid-cols-1 shadow-lg rounded-md shadow-slate-900 bg-white text-center">
+			<!-- <div class="shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Total Runways</h1>
+				<p>{{ stationData?.runways?.length }}</p>
+			</div> -->
+			<h1 class="text-white bg-slate-600 underline text-lg pb-2">Runways Details</h1>
+			<p *ngIf="stationData?.runways">Total Runways: {{ stationData?.runways?.length }}</p>
+			<div  *ngFor="let runway of stationData?.runways; index as i" class="p-1 m-1 mr-4 mb-4 flex flex-col lg:grid lg:grid-cols-6 text-xs shadow-lg shadow-slate-900">
+				<!-- <p>#{{i}}:</p> -->
+				<p *ngIf="runway.ident1 || runway.ident2" class="text-left border-r border-r-black">#{{ i+1 }}: Identities: {{ runway.ident1}}, {{ runway.ident2 }}</p>
+				<p *ngIf="runway.bearing1 || runway.bearing2" class="border-r border-r-black">Bearings: {{ runway.bearing1 }}, {{ runway.bearing2 }}</p>
+				<p class="border-r border-r-black">Length: {{ runway.length_ft }}</p>
+				<p class="border-r border-r-black">Width: {{ runway.width_ft }}</p>
+				<p class="border-r border-r-black">Lights: {{ runway.lights }}</p>
+				<p>Surface: {{ runway.surface }}</p>
 			</div>
 		</div>
 	</div>
