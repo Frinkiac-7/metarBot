@@ -13,7 +13,7 @@ export class AvwxService {
 	constructor(private http: HttpClient) {}
 	
 	getReport(report: string, station: string): Observable<Metar> {
-		return this.http.get<Metar>(`http://localhost:8888/.netlify/functions/avwxGetWxData/?report=${report}&station=${station}`, {
+		return this.http.get<Metar>(`/.netlify/functions/avwxGetWxData/?report=${report}&station=${station}`, {
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -24,7 +24,7 @@ export class AvwxService {
 	}
 
 	stationSearch(id: string): Observable<Station> {
-		return this.http.get<Station>(`http://localhost:8888/.netlify/functions/avwxGetStationData/?station=${id}`, {
+		return this.http.get<Station>(`/.netlify/functions/avwxGetStationData/?station=${id}`, {
 			headers: {
 				'Content-Type': 'application/json'
 			},
