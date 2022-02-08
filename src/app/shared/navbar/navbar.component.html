@@ -8,11 +8,11 @@
 		</div>
 		<!-- Menu for screens larger than 768px -->
 		<div class="nbMenuLg">
-			<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/station" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Airport Info</a>
-			<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/metartaf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">METAR</a>
-			<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Features</a>
-			<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/hireme" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Hire Me!</a>
-			<a *ngIf="authStatus()" class="nbUserMenuItem p-1 border border-red-400" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+			<a class="nbUserMenuItem p-1" routerLink="/station" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Airport Info</a>
+			<a class="nbUserMenuItem p-1" routerLink="/metartaf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">METAR</a>
+			<a class="nbUserMenuItem p-1" routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Features</a>
+			<a class="nbUserMenuItem p-1" routerLink="/hireme" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Hire Me!</a>
+			<a *ngIf="authStatus()" class="nbUserMenuItem p-1" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
 		</div>
 		<!-- UI conditionals -->
 		<div class="flex flex-row justify-end items-center gap-4 p-2">
@@ -30,11 +30,11 @@
 	<!-- Menu for screens smaller than 768px -->
 	<div [ngClass]="{'hidden': !showMenu, 'nbMenuSm': showMenu}" role="menu">
 		<!-- origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 -->
-		<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/station" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Airport Info</a>
-		<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/metartaf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">METAR</a>
-		<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Features</a>
-		<a class="nbUserMenuItem p-1 border border-red-400" routerLink="/hireme" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Hire Me!</a>
-		<a *ngIf="authStatus()" class="nbUserMenuItem p-1 border border-red-400" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+		<a class="nbUserMenuItem p-1" routerLink="/station" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Airport Info</a>
+		<a class="nbUserMenuItem p-1" routerLink="/metartaf" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">METAR</a>
+		<a class="nbUserMenuItem p-1" routerLink="/features" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Features</a>
+		<a class="nbUserMenuItem p-1" routerLink="/hireme" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Hire Me!</a>
+		<a *ngIf="authStatus()" class="nbUserMenuItem p-1" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
 	</div>
 </nav>
 
