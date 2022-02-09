@@ -1,27 +1,28 @@
 # MetarBot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.2.
+metarBot is a weather utility for operators of small unmanned aerial systems. It's designed to help reduce the need to check multiple websites for weather reports, meteorological aerodrome reports (aka METARs), and other sources used by commercial and hobbyist drone pilots.  
 
-## Development server
+## Platforms, tools, libraries, and frameworks
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+metarBot is written using the following:
 
-## Code scaffolding
+- Angular v13.x
+- Tailwind CSS
+- Netlify and Netlify functions 
+- Supabase 
+- AVWX - A publicly available, open source REST API for aviation weather.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Current release
 
-## Build
+metarBot remains a work in progress.  The current state of this repo is approaching the MVP envisioned when I understook the project.  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Planned features and enhancements
 
-## Running unit tests
+Below is a list of a few of the features that will be rolled out in future releases:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- TAF output - Add the option to include TAF data (at stations where available) to the METAR output
+- Dashboard functionality - The ability to save frequently searched IATA/ICAO codes to the backend
+- Implement the backend design using Supabase which is currently only for authentication which is not tied to functionality any existing
 
-## Running end-to-end tests
+![F7 Logo](http://frinkiac-7.net/images/f7-pos.png "F7 logo")
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
