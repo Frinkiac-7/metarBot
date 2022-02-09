@@ -1,7 +1,77 @@
 <app-navbar></app-navbar>
-<p>metartaf works!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus earum quasi, culpa ad adipisci est incidunt vero repudiandae similique, perferendis nostrum et sint numquam voluptas suscipit unde dicta delectus laboriosam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde, officiis, laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet dolorem eligendi alias aperiam expedita neque autem. Dolorum, in!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus earum quasi, culpa ad adipisci est incidunt vero repudiandae similique, perferendis nostrum et sint numquam voluptas suscipit unde dicta delectus laboriosam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde, officiis, laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet dolorem eligendi alias aperiam expedita neque autem. Dolorum, in!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus earum quasi, culpa ad adipisci est incidunt vero repudiandae similique, perferendis nostrum et sint numquam voluptas suscipit unde dicta delectus laboriosam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde, officiis, laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet dolorem eligendi alias aperiam expedita neque autem. Dolorum, in!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus earum quasi, culpa ad adipisci est incidunt vero repudiandae similique, perferendis nostrum et sint numquam voluptas suscipit unde dicta delectus laboriosam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, unde, officiis, laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet laudantium dolore temporibus nam assumenda quos id reiciendis laboriosam eveniet dolorem eligendi alias aperiam expedita neque autem. Dolorum, in!</p>
+<div class="m-1 text-center">
+	<h1>Welcome Back to <strong>metarBot</strong></h1>
+	<form [formGroup]="metarForm" (ngSubmit)="getReport('metar', station.value)">
+		<div class="flex flex-col">
+			<div class="flex justify-center items-center">
+				<img src="../../assets/images/airport-svgrepo-com.svg" class="h-5 w-5" alt="">
+				<label class="form-label pl-2" for="stationId">Airport Code</label>
+			</div>
+			<div class="flex justify-center items-center col-span-1">
+				<input class="form-input" autocomplete="off" type="text" placeholder="Enter ICAO or IATA Code" formControlName="stationId" #station>			
+			</div>
+		</div>
+		<button class="bg-blue-500" role="button" type="submit">Search</button>
+	</form>
+	<div class="m-5 p-1 bg-white shadow-xl shadow-slate-900 rounded-md">
+		<h1>METAR Information</h1>
+		<p>Current and future weather conditions at a specific airport by IATA or ICAO identification code.  Data is taken directly from METARs and TAFs reported by the airport.</p>
+	</div>
+	<div class="m-5 p-5 rounded-md shadow-xl shadow-slate-900">
+		<div  class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+			<h1 class="text-white bg-slate-600 underline text-lg">Raw METAR Output</h1>
+			<p>{{ weatherData?.raw }}</p>
+		</div>
+	</div>
+	<div class="m-5 p-5 rounded-md shadow-xl shadow-slate-900">
+		<div class="text-center m-1 p-3 grid grid-cols-1 lg:grid lg:grid-cols-2 rounded-md">
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Temperature</h1>
+				<p *ngIf="weatherData?.temperature">{{ weatherData?.temperature.value }}<span>&deg;</span>{{ weatherData?.units.temperature }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Dewpoint</h1>
+				<p *ngIf="weatherData?.dewpoint">{{ weatherData?.dewpoint.value }}&deg;{{ weatherData?.units.dewpoint }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Pressure</h1>
+				<p *ngIf="weatherData?.altimeter">{{ weatherData?.altimeter.value }} {{ weatherData?.units.altimeter }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Winds</h1>
+				<p *ngIf="weatherData?.units">{{ weatherData?.wind_direction.repr }} degrees at {{ weatherData?.wind_speed.value }} {{ weatherData?.units.wind_speed }} <span *ngIf="weatherData?.wind_gust?.value"> gusting to {{ weatherData?.wind_gust?.value }} {{ weatherData?.units?.wind_speed }}</span></p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Visibility</h1>
+				<p *ngIf="weatherData?.visibility" class="overflow-hidden">{{ weatherData?.visibility.value }} {{ weatherData.units.visibility }}</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Ceiling</h1>
+				<p *ngIf="weatherData?.units">Not currently available</p>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Clouds</h1>
+				<div *ngFor="let cloud of weatherData?.clouds">
+					<p>{{ cloud.type }} at {{ cloud.altitude }} ({{ cloud.repr }})</p>
+				</div>
+			</div>
+			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Flight Rules</h1>
+				<p>{{ weatherData?.flight_rules }}</p>
+			</div>
+		</div>
+		<div class="m-5 mb-2 grid grid-cols-1 shadow-lg rounded-md shadow-slate-900 bg-white text-center">
+			<!-- <div class="shadow-lg rounded-md shadow-slate-900 bg-white">
+				<h1 class="text-white bg-slate-600 underline text-lg">Total Runways</h1>
+				<p>{{ weatherData?.runways?.length }}</p>
+			</div> -->
+			<h1 class="text-white bg-slate-600 underline text-lg pb-2">Additional Information</h1>
+			<div *ngIf="weatherData?.time">
+				<p>METAR Update Time</p>
+				<p>UTC: {{ weatherData?.time.dt }}</p>
+				<p>Local: {{ weatherData?.time.local }}</p>
+			</div>
+		</div>
+	</div>
+</div>
 <app-footer></app-footer>

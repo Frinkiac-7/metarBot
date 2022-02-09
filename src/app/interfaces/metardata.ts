@@ -80,6 +80,7 @@ export interface RemarksInfo {
 export interface Time {
 	dt:												Date;
 	repr:											string;
+	local:										string;
 }
 
 export interface Units {
