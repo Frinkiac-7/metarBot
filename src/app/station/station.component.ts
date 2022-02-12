@@ -39,12 +39,16 @@ export class StationComponent implements OnInit {
 					} else {
 						this.stationData.reporting = 'False'
 					}
+					localStorage.setItem('station', JSON.stringify(this.stationData))
 				}
 			})
 		}
 	}
 
   ngOnInit(): void {
+		this.stationData = localStorage.getItem('station')
+		this.stationData = JSON.parse(this.stationData)
+
   }
 
 }

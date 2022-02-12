@@ -13,7 +13,7 @@ export class MetartafComponent implements OnInit {
   constructor(private avwx: AvwxService) { }
 
 	apiQuery: any
-	weatherData: any
+	weatherData: any 
 	
 	metarForm = new FormGroup ({
 		stationId: new FormControl('')
@@ -25,31 +25,17 @@ export class MetartafComponent implements OnInit {
 			alert('Please enter an IATA or ICAO airport code.')
 		} else {
 			this.apiQuery = this.avwx.getReport(report, station).subscribe(response => {
-				console.log('station:', station)
-				console.log('report:', report)
 				this.weatherData = response
-				console.log('weather:', response)
 				const date = new Date(this.weatherData.time.dt)
 				this.weatherData.time.local = date.toString()
-				// if (response.error) {
-				// 	this.metarForm.reset()
-				// 	this.weatherData = ''
-				// 	alert(`Error\nError Code: ${response.error.status}\nError Message: ${response.error.data.error}\nError Help: ${response.error.data.help}`)
-				// } else {
-				// 	this.weatherData = response
-				// 	// API returns 'size_airport' (e.g. 'large_airport') string value and I want to exclude the '_airport' portion in the output
-				// 	this.weatherData.type = this.weatherData.type.replace('_airport', '').toUpperCase()
-				// 	if(this.weatherData.reporting) {
-				// 		this.weatherData.reporting = 'True'
-				// 	} else {
-				// 		this.weatherData.reporting = 'False'
-				// 	}
-				// }
+				localStorage.setItem('metar', JSON.stringify(this.weatherData))
 			})
 		}
 	}
 
   ngOnInit(): void {
-  }
+		this.weatherData = localStorage.getItem('metar')
+		this.weatherData = JSON.parse(this.weatherData)
+	}
 
 }
