@@ -1,4 +1,51 @@
 <app-navbar></app-navbar>
-<p>features works!</p>
-<img src="../../assets/images/partly-cloudy-color-svgrepo-com.svg" class="h-16 w-16 mx-auto" alt="">
+<div class="m-2 p-2">
+	<div class="jumbotron">
+		<!-- Logo div -->
+		<div class="bg-slate-800 text-white rounded-md shadow-xl shadow-slate-900">
+			<h1 class="uppercase tracking-widest text-3xl">metarBot</h1>
+			<img src="../../assets/images/drone-svgrepo-com-bw.svg" class="h-20 w-20 pt-4 mx-auto filter-green-500" alt="">
+			<h2 class="p-2 pb-4">Plan, track, and store your flight weather data</h2>
+			<p class="p-2 rounded-md">
+				metarBot is a weather utility for operators of small unmanned aerial systems.  It's designed to help reduce the need to check multiple websites for weather reports, meteorological aerodrome reports (aka METARs), and other sources used by commercial and hobbyist drone pilots.
+			</p>
+		</div>
+	</div>
+	<div class="grid grid-cols-2 pt-6 py-3 gap-5">
+		<div class="text-center bg-gray-100 rounded-md shadow-lg shadow-slate-900">
+			<img src="../../assets/images/airport-building-svgrepo-com.svg" class="p-2 h-16 w-1h-16 mx-auto" alt="">
+			<h2>Get Airport Information & Details</h2>
+			<p class="text-left px-3">
+				You can use <strong>metarBot</strong> to get airport information such as location, codes, GPS coordinates and runway details.
+			</p>
+			<button class="btn"><a routerLink="/station">Try It!</a></button>
+		</div>
+		<div class="text-center bg-gray-100 rounded-md shadow-lg shadow-slate-900">
+			<img src="../../assets/images/partly-cloudy-color-svgrepo-com.svg" class="p-2 h-16 w-1h-16 mx-auto" alt="">
+			<h2>Station METARs and TAFs</h2>
+			<p class="text-left px-3">
+				Access Meteorological Aerodrome Reports (METAR) and Terminal Aerodrome Forecasts easily with <strong>metarBot</strong> .
+			</p>
+			<button class="btn"><a routerLink="/metartaf">Try It!</a></button>
+		</div>
+	</div>
+	<div class="grid grid-cols-2 pt-6 py-3 gap-5">
+		<!-- <h1 class="text-center col-span-12">Planned Features</h1> -->
+		<div class="text-center bg-gray-100 rounded-md shadow-lg shadow-slate-900">
+			<img src="../../assets/images/warning-svgrepo-com.svg" class="p-2 h-16 w-1h-16 mx-auto" alt="">
+			<h2>NOTAMs directly from the FAA</h2>
+			<p class="text-left px-3">
+				<strong>metarBot</strong> gets you up to date Notice to Airmen (NOTAMs) directly from the Federal Aviation Administration.
+			</p>
+			<button class="btn"><a routerLink="/notams">Try It!</a></button>
+		</div>
+		<div class="text-center bg-gray-100 rounded-md shadow-lg shadow-slate-900">
+			<img src="../../assets/images/checklist-svgrepo-com.svg" class="p-2 h-16 w-1h-16 mx-auto" alt="">
+			<h2>Planned Features</h2>
+			<p class="text-left px-3">
+				<strong>metarBot</strong>'s future includes dashboards for easy access to frequently used data, general weather forecasts, and much more.</p>
+			<button class="btn"><a routerLink="/">Home</a></button>
+		</div>
+	</div>
+</div>
 <app-footer></app-footer>

@@ -23,6 +23,7 @@ import { StationComponent } from './station/station.component';
 import { MetartafComponent } from './metartaf/metartaf.component';
 import { HiremeComponent } from './hireme/hireme.component';
 import { FeaturesComponent } from './features/features.component';
+import { NotamsComponent } from './notams/notams.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FeaturesComponent } from './features/features.component';
     StationComponent,
     MetartafComponent,
     HiremeComponent,
-    FeaturesComponent
+    FeaturesComponent,
+    NotamsComponent
   ],
   imports: [
     BrowserModule,

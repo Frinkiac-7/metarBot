@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="text-center">
+	<h1>Welcome Back to <strong>metarBot</strong></h1>
+	<form [formGroup]="notamForm" (ngSubmit)="getNotams(type.value)">
+		<div class="flex flex-col">
+			<div class="flex justify-center items-center">
+				<img src="../../assets/images/airport-svgrepo-com.svg" class="h-5 w-5" alt="">
+				<label class="form-label pl-2" for="type">NOTAM Type</label>
+			</div>
+			<div class="flex justify-center items-center col-span-1">
+				<input class="form-input" autocomplete="off" type="text" placeholder="Enter NOTAM type" formControlName="type" #type>			
+			</div>
+		</div>
+		<button class="bg-blue-500" role="button" type="submit">Search</button>
+	</form>
+	<div class="m-5 p-1 bg-white shadow-xl shadow-slate-900 rounded-md">
+		<h1>General Information</h1>
+		<p>Valid NOTAM types are: ALL, INTL, MIL, DOM, LMIL, and FDC.</p>
+	</div>
+</div>
+<div class="m-2 p-2">
+	<div *ngFor="let item of notamData?.items" class="shadow-lg shadow-slate-900 mb-4 p-2">
+		<div class="grid grid-cols-1 mb-2">
+			<h1 class="text-center">NOTAM Number: {{ item?.properties?.coreNOTAMData?.notam.number }}</h1>
+		</div>
+		<div class="grid grid-cols-1 lg:flex-row lg:grid-cols-2 bg-white">
+			<div>
+				<p>Starts:  {{ item?.properties?.coreNOTAMData?.notam.effectiveStart }}</p>
+				<p>Ends:  {{ item?.properties?.coreNOTAMData?.notam.effectiveEnd }}</p>
+				<p>Issued:  {{ item?.properties?.coreNOTAMData?.notam.issued }}</p>
+				<p>Updated:  {{ item?.properties?.coreNOTAMData?.notam.lastUpdated }}</p>
+			</div>
+			<div class="mb-2">
+				<p>NOTAM Type: {{ item?.properties?.coreNOTAMData?.notam.classification }}</p>
+				<p>Location: {{ item?.properties?.coreNOTAMData?.notam.location }}</p>
+				<p>Coordinates: {{ item?.properties?.coreNOTAMData?.notam.coordinates }}</p>
+				<p>Status: {{ item?.properties?.coreNOTAMData?.notam.type }}</p>
+			</div>
+		</div>
+		<div class="col-span-12">
+			<h1 class="text-center mb-2">NOTAM Text</h1>
+			<p class="bg-white">{{ item?.properties?.coreNOTAMData?.notam?.text }}</p>
+			<hr>
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>

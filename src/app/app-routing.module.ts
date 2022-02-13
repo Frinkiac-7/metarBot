@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { HiremeComponent } from './hireme/hireme.component';
+import { NotamsComponent } from './notams/notams.component';
 import { MetartafComponent } from './metartaf/metartaf.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
 	{
 		path: 'features',
 		component: FeaturesComponent
+	},
+	{
+		path: 'notams',
+		component: NotamsComponent
 	},
 	{
 		path: 'hireme',
