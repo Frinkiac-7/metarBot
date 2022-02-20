@@ -1,6 +1,10 @@
 <app-navbar></app-navbar>
 <div class="m-1 text-center">
-	<h1>Welcome Back to <strong>metarBot</strong></h1>
+	<div class="m-5 p-1 bg-white shadow-xl shadow-slate-900 rounded-md">
+		<h1 class="text-lg tracking-wide">General Information</h1>
+		<p>General station information for an airfield by IATA or ICAO identification code.</p>
+	</div>
+	<h1 class="text-lg tracking-wide">Welcome Back to <strong>metarBot</strong></h1>
 	<form [formGroup]="stationForm" (ngSubmit)="stationSearch(station.value)">
 		<div class="flex flex-col">
 			<div class="flex justify-center items-center">
@@ -13,10 +17,6 @@
 		</div>
 		<button class="bg-blue-500" role="button" type="submit">Search</button>
 	</form>
-	<div class="m-5 p-1 bg-white shadow-xl shadow-slate-900 rounded-md">
-		<h1>General Information</h1>
-		<p>General station information for an airfield by IATA or ICAO identification code.</p>
-	</div>
 	<div class="m-5 p-5 rounded-md shadow-xl shadow-slate-900">
 		<div class="text-center m-1 p-3 grid grid-cols-1 lg:grid lg:grid-cols-2 rounded-md">
 			<div class="m-1 shadow-lg rounded-md shadow-slate-900 bg-white">

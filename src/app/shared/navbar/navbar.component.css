@@ -1,5 +1,5 @@
 .active {
-	@apply text-green-200;
+	@apply text-green-200 bg-black  rounded-lg
 }
 
 .nbAppName {
