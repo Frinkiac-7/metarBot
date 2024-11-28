@@ -20,7 +20,7 @@
     "@angular/router": "^19.0.1",
     "@supabase/supabase-js": "^1.28.0",
     "axios": "^0.24.0",
-    "ngx-toastr": "^14.2.1",
+    "ngx-toastr": "^19.0.0",
     "qs": "^6.7.0",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",
