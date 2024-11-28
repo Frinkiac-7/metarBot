@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { AvwxService } from './../services/avwx.service';
 @Component({
@@ -16,8 +16,8 @@ export class StationComponent implements OnInit {
 	stationData: any
 	name = ''
 	
-	stationForm = new FormGroup ({
-		stationId: new FormControl('')
+	stationForm = new UntypedFormGroup ({
+		stationId: new UntypedFormControl('')
 	})
 
 	stationSearch(id: any) {

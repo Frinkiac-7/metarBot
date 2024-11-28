@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { Metar } from './../interfaces/metardata';
 import { AvwxService } from './../services/avwx.service';
@@ -15,8 +15,8 @@ export class MetartafComponent implements OnInit {
 	apiQuery: any
 	weatherData: any 
 	
-	metarForm = new FormGroup ({
-		stationId: new FormControl('')
+	metarForm = new UntypedFormGroup ({
+		stationId: new UntypedFormControl('')
 	})
 
 	getReport(report: string, station: string) {

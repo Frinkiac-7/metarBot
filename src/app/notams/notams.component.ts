@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 
 import { FaaService } from './../services/faa.service';
 
@@ -14,8 +14,8 @@ export class NotamsComponent implements OnInit {
 
 	notamData: any
 
-	notamForm = new FormGroup ({
-		type: new FormControl('')
+	notamForm = new UntypedFormGroup ({
+		type: new UntypedFormControl('')
 	})
 
 	getNotams(type: string) {

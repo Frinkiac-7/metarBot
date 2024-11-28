@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SupabaseService } from './../../services/supabase.service';
@@ -20,9 +20,9 @@ export class SigninComponent implements OnInit {
 	// authAction!: AuthAction | any
 	// TODO:  Interface causes an error stating that values are missing.  Using any for now but need to resolve this.
 
-	loginForm = new FormGroup ({
-		username: new FormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
-		password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+	loginForm = new UntypedFormGroup ({
+		username: new UntypedFormControl('', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]),
+		password: new UntypedFormControl('', [Validators.required, Validators.minLength(8)]),
 	})
 
 	async login() {
