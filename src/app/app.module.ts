@@ -7,7 +7,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 
 import { AuthGuard } from './services/auth.guard';
 import { SupabaseService } from './services/supabase.service';
-import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+import { ToastrModule } from 'ngx-toastr';
 import { AvwxService } from './services/avwx.service';
 
 import { AppComponent } from './app.component';
@@ -44,7 +44,6 @@ import { NotamsComponent } from './notams/notams.component';
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
         ReactiveFormsModule,
-        BrowserAnimationsModule,
-        ToastrModule.forRoot(),
-        ToastContainerModule], providers: [SupabaseService, AuthGuard, AvwxService, provideHttpClient(withInterceptorsFromDi())] })
+        BrowserAnimationsModule],
+        providers: [SupabaseService, AuthGuard, AvwxService, provideHttpClient(withInterceptorsFromDi())]})
 export class AppModule { }
