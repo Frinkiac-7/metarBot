@@ -3,9 +3,10 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 
 import { AvwxService } from './../services/avwx.service';
 @Component({
-  selector: 'app-station',
-  templateUrl: './station.component.html',
-  styleUrls: ['./station.component.css']
+    selector: 'app-station',
+    templateUrl: './station.component.html',
+    styleUrls: ['./station.component.css'],
+    standalone: false
 })
 
 export class StationComponent implements OnInit {

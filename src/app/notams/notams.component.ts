@@ -4,9 +4,10 @@ import { UntypedFormGroup, UntypedFormControl } from '@angular/forms';
 import { FaaService } from './../services/faa.service';
 
 @Component({
-  selector: 'app-notams',
-  templateUrl: './notams.component.html',
-  styleUrls: ['./notams.component.css']
+    selector: 'app-notams',
+    templateUrl: './notams.component.html',
+    styleUrls: ['./notams.component.css'],
+    standalone: false
 })
 export class NotamsComponent implements OnInit {
 

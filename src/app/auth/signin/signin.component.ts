@@ -6,9 +6,10 @@ import { SupabaseService } from './../../services/supabase.service';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+    selector: 'app-signin',
+    templateUrl: './signin.component.html',
+    styleUrls: ['./signin.component.css'],
+    standalone: false
 })
 export class SigninComponent implements OnInit {
 

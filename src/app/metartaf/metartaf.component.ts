@@ -4,9 +4,10 @@ import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms
 import { Metar } from './../interfaces/metardata';
 import { AvwxService } from './../services/avwx.service';
 @Component({
-  selector: 'app-metartaf',
-  templateUrl: './metartaf.component.html',
-  styleUrls: ['./metartaf.component.css']
+    selector: 'app-metartaf',
+    templateUrl: './metartaf.component.html',
+    styleUrls: ['./metartaf.component.css'],
+    standalone: false
 })
 export class MetartafComponent implements OnInit {
 
