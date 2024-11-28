@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "metarBot:build:production"
+              "buildTarget": "metarBot:build:production"
             },
             "development": {
-              "browserTarget": "metarBot:build:development"
+              "buildTarget": "metarBot:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "metarBot:build"
+            "buildTarget": "metarBot:build"
           }
         },
         "test": {
