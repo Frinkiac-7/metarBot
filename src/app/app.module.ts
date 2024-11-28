@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 import { AuthGuard } from './services/auth.guard';
 import { SupabaseService } from './services/supabase.service';
@@ -25,33 +25,26 @@ import { HiremeComponent } from './hireme/hireme.component';
 import { FeaturesComponent } from './features/features.component';
 import { NotamsComponent } from './notams/notams.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    AuthComponent,
-    NotfoundComponent,
-    DashboardComponent,
-    SigninComponent,
-    SignupComponent,
-    FooterComponent,
-    StationComponent,
-    MetartafComponent,
-    HiremeComponent,
-    FeaturesComponent,
-    NotamsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-		ReactiveFormsModule,
-		BrowserAnimationsModule,
-		ToastrModule.forRoot(),
-		ToastContainerModule,
-		HttpClientModule
-  ],
-  providers: [SupabaseService, AuthGuard, AvwxService],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        AuthComponent,
+        NotfoundComponent,
+        DashboardComponent,
+        SigninComponent,
+        SignupComponent,
+        FooterComponent,
+        StationComponent,
+        MetartafComponent,
+        HiremeComponent,
+        FeaturesComponent,
+        NotamsComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(),
+        ToastContainerModule], providers: [SupabaseService, AuthGuard, AvwxService, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
