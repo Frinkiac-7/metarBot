@@ -18,12 +18,11 @@ const handler = async function (event) {
 				'Authorization': process.env.avwxKey
 			}
 		}).then((results) => {
-			console.log('results:', results)
-			metar = results
+			metar = results.data
 		});
 	
 		return {
-			statusCode: metar.statusCode,
+			statusCode: 200,
 			headers: { 
 				'content-type': 'application/json',
 				'access-control-allow-origin': '*',
