@@ -19,11 +19,11 @@ const handler = async function (event) {
 			}
 		}).then((results) => {
 			console.log('results:', results)
-			metar = results.data
+			metar = results
 		});
 	
 		return {
-			statusCode: 200,
+			statusCode: metar.statusCode,
 			headers: { 
 				'content-type': 'application/json',
 				'access-control-allow-origin': '*',
