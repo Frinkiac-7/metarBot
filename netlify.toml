@@ -1,5 +1,5 @@
 [build]
-  publish = "dist/metarBot"
+  publish = "dist/metarBot/browser"
 	functions = "./src/app/services/netlify"
 [[redirects]]
   from = "/*"
