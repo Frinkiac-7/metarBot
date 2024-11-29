@@ -18,6 +18,7 @@ const handler = async function (event) {
 				'Authorization': process.env.avwxKey
 			}
 		}).then((results) => {
+			console.log('results:', results)
 			metar = results.data
 		});
 	
